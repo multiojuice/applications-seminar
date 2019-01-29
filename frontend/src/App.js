@@ -5,14 +5,14 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      endpoint: '',
-      response: null
+      endpoint: ''
     };
   }
 
   restRequest = (event) => {
     const restMethod = event.target.id;
-    axios.get(`http://127.0.0.1:5000/${this.state.endpoint}`, {method: restMethod})
+    fetch(`http://127.0.0.1:5000/${this.state.endpoint}`, {method: restMethod})
+      .then(resp => resp.json())
       .then(response => console.warn(response))
   }
 
